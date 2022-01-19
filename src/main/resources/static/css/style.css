@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(342deg, #44c1e7, transparent);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.download-file {
+    background: white;
+    border: 3px solid #ffffff;
+    padding: 20px 50px;
+    border-radius: 10px;
+    font-size: 23px;
+    cursor: pointer;
+    color: black;
+    box-shadow: 0 0 22px #0000003d;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+button.download-file svg {
+    margin-bottom: 20px;
+}
+
+button.download-file.bad::after {
+    content: "The file couldn't be safely downloaded";
+    background: #ff0000cc;
+    position: absolute;
+    inset: 0;
+    z-index: 9999;
+    border-radius: 10px;
+    color: white;
+    padding: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
