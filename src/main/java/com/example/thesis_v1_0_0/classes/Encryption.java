@@ -72,7 +72,10 @@ public class Encryption {
         PrivateKey privateKey = null;
         try {
             KeyStore keyStore = KeyStore.getInstance("PKCS12");
-            InputStream privateKeyFileStream = FileManager.getFileFromResourceAsStream("static/certificates/sender_keystore.p12", getClass());
+            InputStream privateKeyFileStream = FileManager.getFileFromResourceAsStream(
+                    "static/certificates/sender_keystore.p12",
+                    this.getClass().getClassLoader()
+            );
             keyStore.load(privateKeyFileStream, password);
             privateKey = (PrivateKey) keyStore.getKey("senderKeyPair", password);
         } catch (KeyStoreException | NoSuchAlgorithmException | UnrecoverableKeyException | IOException | CertificateException e) {
@@ -84,7 +87,10 @@ public class Encryption {
     public PublicKey getPublicKey() {
         PublicKey publicKey = null;
         try {
-            InputStream publicKeyFileStream = FileManager.getFileFromResourceAsStream("static/certificates/sender_certificate.cer", getClass());
+            InputStream publicKeyFileStream = FileManager.getFileFromResourceAsStream(
+                    "static/certificates/sender_certificate.cer",
+                    this.getClass().getClassLoader()
+            );
             CertificateFactory f = CertificateFactory.getInstance("X.509");
             X509Certificate certificate = (X509Certificate) f.generateCertificate(publicKeyFileStream);
             publicKey = certificate.getPublicKey();

@@ -1,7 +1,5 @@
 package com.example.thesis_v1_0_0.controllers;
-
-import com.example.thesis_v1_0_0.classes.Encryption;
-import com.example.thesis_v1_0_0.classes.FileManager;
+import com.example.thesis_v1_0_0.classes.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +12,7 @@ public class DownloadController {
     public HashMap<String, Object> downloadFile(Model model, @PathVariable("filepath") String filepath) {
 
         // Read file bytes
-        byte[] fileBytes = FileManager.getFileBytes("E:\\Quack\\ptyxiakh\\project\\src\\main\\resources\\static\\files\\"+filepath);
+        byte[] fileBytes = FileManager.getFileBytes("static/files/"+filepath, this.getClass().getClassLoader());
 
         // Generate digital signature
         byte[] digitalSignature = (new Encryption()).generateDigitalSignature(fileBytes);

@@ -1,7 +1,6 @@
 package com.example.thesis_v1_0_0.controllers;
 
-import com.example.thesis_v1_0_0.classes.Encryption;
-import com.example.thesis_v1_0_0.classes.FileManager;
+import com.example.thesis_v1_0_0.classes.*;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
